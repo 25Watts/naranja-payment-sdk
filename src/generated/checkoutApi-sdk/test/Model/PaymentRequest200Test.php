@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentRequestsTest
+ * PaymentRequest200Test
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ namespace Naranja\CheckoutApi;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PaymentRequestsTest Class Doc Comment
+ * PaymentRequest200Test Class Doc Comment
  *
  * @category    Class
- * @description PaymentRequests
+ * @description PaymentRequest200
  * @package     Naranja\CheckoutApi
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class PaymentRequestsTest extends TestCase
+class PaymentRequest200Test extends TestCase
 {
 
     /**
@@ -72,9 +72,9 @@ class PaymentRequestsTest extends TestCase
     }
 
     /**
-     * Test "PaymentRequests"
+     * Test "PaymentRequest200"
      */
-    public function testPaymentRequests()
+    public function testPaymentRequest200()
     {
     }
 
@@ -86,16 +86,16 @@ class PaymentRequestsTest extends TestCase
     }
 
     /**
-     * Test attribute "authorization_mode"
+     * Test attribute "status"
      */
-    public function testPropertyAuthorizationMode()
+    public function testPropertyStatus()
     {
     }
 
     /**
-     * Test attribute "external_payment_id"
+     * Test attribute "expiration_date"
      */
-    public function testPropertyExternalPaymentId()
+    public function testPropertyExpirationDate()
     {
     }
 
@@ -107,23 +107,16 @@ class PaymentRequestsTest extends TestCase
     }
 
     /**
-     * Test attribute "additional_info"
+     * Test attribute "external_payment_id"
      */
-    public function testPropertyAdditionalInfo()
+    public function testPropertyExternalPaymentId()
     {
     }
 
     /**
-     * Test attribute "seller_data"
+     * Test attribute "id"
      */
-    public function testPropertySellerData()
-    {
-    }
-
-    /**
-     * Test attribute "request_creation_redirect"
-     */
-    public function testPropertyRequestCreationRedirect()
+    public function testPropertyId()
     {
     }
 
@@ -131,6 +124,27 @@ class PaymentRequestsTest extends TestCase
      * Test attribute "callback_url"
      */
     public function testPropertyCallbackUrl()
+    {
+    }
+
+    /**
+     * Test attribute "authorization_mode"
+     */
+    public function testPropertyAuthorizationMode()
+    {
+    }
+
+    /**
+     * Test attribute "equest_creation_redirect"
+     */
+    public function testPropertyEquestCreationRedirect()
+    {
+    }
+
+    /**
+     * Test attribute "creation_date"
+     */
+    public function testPropertyCreationDate()
     {
     }
 }

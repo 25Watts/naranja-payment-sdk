@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentRequests200Test
+ * PaymentRequestTransactionTest
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ namespace Naranja\CheckoutApi;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PaymentRequests200Test Class Doc Comment
+ * PaymentRequestTransactionTest Class Doc Comment
  *
  * @category    Class
- * @description PaymentRequests200
+ * @description PaymentRequestTransaction
  * @package     Naranja\CheckoutApi
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class PaymentRequests200Test extends TestCase
+class PaymentRequestTransactionTest extends TestCase
 {
 
     /**
@@ -72,79 +72,37 @@ class PaymentRequests200Test extends TestCase
     }
 
     /**
-     * Test "PaymentRequests200"
+     * Test "PaymentRequestTransaction"
      */
-    public function testPaymentRequests200()
+    public function testPaymentRequestTransaction()
     {
     }
 
     /**
-     * Test attribute "payment_type"
+     * Test attribute "amount"
      */
-    public function testPropertyPaymentType()
+    public function testPropertyAmount()
     {
     }
 
     /**
-     * Test attribute "status"
+     * Test attribute "merchant_id"
      */
-    public function testPropertyStatus()
+    public function testPropertyMerchantId()
     {
     }
 
     /**
-     * Test attribute "expiration_date"
+     * Test attribute "soft_descriptor"
      */
-    public function testPropertyExpirationDate()
+    public function testPropertySoftDescriptor()
     {
     }
 
     /**
-     * Test attribute "transactions"
+     * Test attribute "product"
      */
-    public function testPropertyTransactions()
-    {
-    }
-
-    /**
-     * Test attribute "external_payment_id"
-     */
-    public function testPropertyExternalPaymentId()
-    {
-    }
-
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
-
-    /**
-     * Test attribute "callback_url"
-     */
-    public function testPropertyCallbackUrl()
-    {
-    }
-
-    /**
-     * Test attribute "authorization_mode"
-     */
-    public function testPropertyAuthorizationMode()
-    {
-    }
-
-    /**
-     * Test attribute "equest_creation_redirect"
-     */
-    public function testPropertyEquestCreationRedirect()
-    {
-    }
-
-    /**
-     * Test attribute "creation_date"
-     */
-    public function testPropertyCreationDate()
+    public function testPropertyProduct()
     {
     }
 }

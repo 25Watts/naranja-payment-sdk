@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentRequestsTransaction
+ * InstallmentsPlan
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Naranja\CheckoutApi\ObjectSerializer;
 
 /**
- * PaymentRequestsTransaction Class Doc Comment
+ * InstallmentsPlan Class Doc Comment
  *
  * @category Class
  * @package  Naranja\CheckoutApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
+class InstallmentsPlan implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'paymentRequestsTransaction';
+    protected static $openAPIModelName = 'installments_plan';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => '\Naranja\CheckoutApi\Model\Amount',
-        'merchant_id' => 'string',
-        'soft_descriptor' => 'string',
-        'products' => '\Naranja\CheckoutApi\Model\ProductItem[]'
+        'installments' => 'float',
+        'id' => 'float'
     ];
 
     /**
@@ -69,10 +67,8 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'merchant_id' => null,
-        'soft_descriptor' => null,
-        'products' => null
+        'installments' => null,
+        'id' => null
     ];
 
     /**
@@ -102,10 +98,8 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'merchant_id' => 'merchant_id',
-        'soft_descriptor' => 'soft_descriptor',
-        'products' => 'products'
+        'installments' => 'installments',
+        'id' => 'id'
     ];
 
     /**
@@ -114,10 +108,8 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'merchant_id' => 'setMerchantId',
-        'soft_descriptor' => 'setSoftDescriptor',
-        'products' => 'setProducts'
+        'installments' => 'setInstallments',
+        'id' => 'setId'
     ];
 
     /**
@@ -126,10 +118,8 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'merchant_id' => 'getMerchantId',
-        'soft_descriptor' => 'getSoftDescriptor',
-        'products' => 'getProducts'
+        'installments' => 'getInstallments',
+        'id' => 'getId'
     ];
 
     /**
@@ -192,10 +182,8 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['merchant_id'] = isset($data['merchant_id']) ? $data['merchant_id'] : null;
-        $this->container['soft_descriptor'] = isset($data['soft_descriptor']) ? $data['soft_descriptor'] : null;
-        $this->container['products'] = isset($data['products']) ? $data['products'] : null;
+        $this->container['installments'] = isset($data['installments']) ? $data['installments'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -207,9 +195,6 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -226,97 +211,49 @@ class PaymentRequestsTransaction implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets amount
+     * Gets installments
      *
-     * @return \Naranja\CheckoutApi\Model\Amount
+     * @return float|null
      */
-    public function getAmount()
+    public function getInstallments()
     {
-        return $this->container['amount'];
+        return $this->container['installments'];
     }
 
     /**
-     * Sets amount
+     * Sets installments
      *
-     * @param \Naranja\CheckoutApi\Model\Amount $amount amount
+     * @param float|null $installments installments
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setInstallments($installments)
     {
-        $this->container['amount'] = $amount;
+        $this->container['installments'] = $installments;
 
         return $this;
     }
 
     /**
-     * Gets merchant_id
+     * Gets id
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getMerchantId()
+    public function getId()
     {
-        return $this->container['merchant_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets merchant_id
+     * Sets id
      *
-     * @param string|null $merchant_id merchant_id
+     * @param float|null $id id
      *
      * @return $this
      */
-    public function setMerchantId($merchant_id)
+    public function setId($id)
     {
-        $this->container['merchant_id'] = $merchant_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets soft_descriptor
-     *
-     * @return string|null
-     */
-    public function getSoftDescriptor()
-    {
-        return $this->container['soft_descriptor'];
-    }
-
-    /**
-     * Sets soft_descriptor
-     *
-     * @param string|null $soft_descriptor soft_descriptor
-     *
-     * @return $this
-     */
-    public function setSoftDescriptor($soft_descriptor)
-    {
-        $this->container['soft_descriptor'] = $soft_descriptor;
-
-        return $this;
-    }
-
-    /**
-     * Gets products
-     *
-     * @return \Naranja\CheckoutApi\Model\ProductItem[]|null
-     */
-    public function getProducts()
-    {
-        return $this->container['products'];
-    }
-
-    /**
-     * Sets products
-     *
-     * @param \Naranja\CheckoutApi\Model\ProductItem[]|null $products products
-     *
-     * @return $this
-     */
-    public function setProducts($products)
-    {
-        $this->container['products'] = $products;
+        $this->container['id'] = $id;
 
         return $this;
     }

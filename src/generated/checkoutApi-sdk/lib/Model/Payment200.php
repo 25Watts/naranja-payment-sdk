@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentRequests
+ * Payment200
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Naranja\CheckoutApi\ObjectSerializer;
 
 /**
- * PaymentRequests Class Doc Comment
+ * Payment200 Class Doc Comment
  *
  * @category Class
  * @package  Naranja\CheckoutApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PaymentRequests implements ModelInterface, ArrayAccess
+class Payment200 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PaymentRequests implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'payment_requests';
+    protected static $openAPIModelName = 'payment200';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +58,15 @@ class PaymentRequests implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'payment_type' => 'string',
-        'authorization_mode' => 'string',
-        'external_payment_id' => 'string',
-        'transactions' => '\Naranja\CheckoutApi\Model\Transaction[]',
         'additional_info' => 'string',
-        'seller_data' => '\Naranja\CheckoutApi\Model\SellerData',
-        'request_creation_redirect' => '\Naranja\CheckoutApi\Model\RequestCreationRedirect',
-        'callback_url' => 'string'
+        'payment_method' => '\Naranja\CheckoutApi\Model\PaymentMethod',
+        'status' => 'string',
+        'external_payment_id' => 'string',
+        'date_created' => 'string',
+        'callback_url' => 'string',
+        'authorization_mode' => 'string',
+        'id' => 'string',
+        'transactions' => '\Naranja\CheckoutApi\Model\PaymentTransaction[]'
     ];
 
     /**
@@ -74,13 +76,15 @@ class PaymentRequests implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'payment_type' => null,
-        'authorization_mode' => null,
-        'external_payment_id' => null,
-        'transactions' => null,
         'additional_info' => null,
-        'seller_data' => null,
-        'request_creation_redirect' => null,
-        'callback_url' => null
+        'payment_method' => null,
+        'status' => null,
+        'external_payment_id' => null,
+        'date_created' => null,
+        'callback_url' => null,
+        'authorization_mode' => null,
+        'id' => null,
+        'transactions' => null
     ];
 
     /**
@@ -111,13 +115,15 @@ class PaymentRequests implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'payment_type' => 'payment_type',
-        'authorization_mode' => 'authorization_mode',
-        'external_payment_id' => 'external_payment_id',
-        'transactions' => 'transactions',
         'additional_info' => 'additional_info',
-        'seller_data' => 'sellerData',
-        'request_creation_redirect' => 'request_creation_redirect',
-        'callback_url' => 'callback_url'
+        'payment_method' => 'payment_method',
+        'status' => 'status',
+        'external_payment_id' => 'external_payment_id',
+        'date_created' => 'date_created',
+        'callback_url' => 'callback_url',
+        'authorization_mode' => 'authorization_mode',
+        'id' => 'id',
+        'transactions' => 'transactions'
     ];
 
     /**
@@ -127,13 +133,15 @@ class PaymentRequests implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'payment_type' => 'setPaymentType',
-        'authorization_mode' => 'setAuthorizationMode',
-        'external_payment_id' => 'setExternalPaymentId',
-        'transactions' => 'setTransactions',
         'additional_info' => 'setAdditionalInfo',
-        'seller_data' => 'setSellerData',
-        'request_creation_redirect' => 'setRequestCreationRedirect',
-        'callback_url' => 'setCallbackUrl'
+        'payment_method' => 'setPaymentMethod',
+        'status' => 'setStatus',
+        'external_payment_id' => 'setExternalPaymentId',
+        'date_created' => 'setDateCreated',
+        'callback_url' => 'setCallbackUrl',
+        'authorization_mode' => 'setAuthorizationMode',
+        'id' => 'setId',
+        'transactions' => 'setTransactions'
     ];
 
     /**
@@ -143,13 +151,15 @@ class PaymentRequests implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'payment_type' => 'getPaymentType',
-        'authorization_mode' => 'getAuthorizationMode',
-        'external_payment_id' => 'getExternalPaymentId',
-        'transactions' => 'getTransactions',
         'additional_info' => 'getAdditionalInfo',
-        'seller_data' => 'getSellerData',
-        'request_creation_redirect' => 'getRequestCreationRedirect',
-        'callback_url' => 'getCallbackUrl'
+        'payment_method' => 'getPaymentMethod',
+        'status' => 'getStatus',
+        'external_payment_id' => 'getExternalPaymentId',
+        'date_created' => 'getDateCreated',
+        'callback_url' => 'getCallbackUrl',
+        'authorization_mode' => 'getAuthorizationMode',
+        'id' => 'getId',
+        'transactions' => 'getTransactions'
     ];
 
     /**
@@ -213,13 +223,15 @@ class PaymentRequests implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['payment_type'] = isset($data['payment_type']) ? $data['payment_type'] : null;
-        $this->container['authorization_mode'] = isset($data['authorization_mode']) ? $data['authorization_mode'] : null;
-        $this->container['external_payment_id'] = isset($data['external_payment_id']) ? $data['external_payment_id'] : null;
-        $this->container['transactions'] = isset($data['transactions']) ? $data['transactions'] : null;
         $this->container['additional_info'] = isset($data['additional_info']) ? $data['additional_info'] : null;
-        $this->container['seller_data'] = isset($data['seller_data']) ? $data['seller_data'] : null;
-        $this->container['request_creation_redirect'] = isset($data['request_creation_redirect']) ? $data['request_creation_redirect'] : null;
+        $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['external_payment_id'] = isset($data['external_payment_id']) ? $data['external_payment_id'] : null;
+        $this->container['date_created'] = isset($data['date_created']) ? $data['date_created'] : null;
         $this->container['callback_url'] = isset($data['callback_url']) ? $data['callback_url'] : null;
+        $this->container['authorization_mode'] = isset($data['authorization_mode']) ? $data['authorization_mode'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['transactions'] = isset($data['transactions']) ? $data['transactions'] : null;
     }
 
     /**
@@ -231,24 +243,6 @@ class PaymentRequests implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['payment_type'] === null) {
-            $invalidProperties[] = "'payment_type' can't be null";
-        }
-        if ($this->container['authorization_mode'] === null) {
-            $invalidProperties[] = "'authorization_mode' can't be null";
-        }
-        if ($this->container['external_payment_id'] === null) {
-            $invalidProperties[] = "'external_payment_id' can't be null";
-        }
-        if ($this->container['transactions'] === null) {
-            $invalidProperties[] = "'transactions' can't be null";
-        }
-        if ($this->container['request_creation_redirect'] === null) {
-            $invalidProperties[] = "'request_creation_redirect' can't be null";
-        }
-        if ($this->container['callback_url'] === null) {
-            $invalidProperties[] = "'callback_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -267,7 +261,7 @@ class PaymentRequests implements ModelInterface, ArrayAccess
     /**
      * Gets payment_type
      *
-     * @return string
+     * @return string|null
      */
     public function getPaymentType()
     {
@@ -277,85 +271,13 @@ class PaymentRequests implements ModelInterface, ArrayAccess
     /**
      * Sets payment_type
      *
-     * @param string $payment_type payment_type
+     * @param string|null $payment_type payment_type
      *
      * @return $this
      */
     public function setPaymentType($payment_type)
     {
         $this->container['payment_type'] = $payment_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets authorization_mode
-     *
-     * @return string
-     */
-    public function getAuthorizationMode()
-    {
-        return $this->container['authorization_mode'];
-    }
-
-    /**
-     * Sets authorization_mode
-     *
-     * @param string $authorization_mode authorization_mode
-     *
-     * @return $this
-     */
-    public function setAuthorizationMode($authorization_mode)
-    {
-        $this->container['authorization_mode'] = $authorization_mode;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_payment_id
-     *
-     * @return string
-     */
-    public function getExternalPaymentId()
-    {
-        return $this->container['external_payment_id'];
-    }
-
-    /**
-     * Sets external_payment_id
-     *
-     * @param string $external_payment_id external_payment_id
-     *
-     * @return $this
-     */
-    public function setExternalPaymentId($external_payment_id)
-    {
-        $this->container['external_payment_id'] = $external_payment_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets transactions
-     *
-     * @return \Naranja\CheckoutApi\Model\Transaction[]
-     */
-    public function getTransactions()
-    {
-        return $this->container['transactions'];
-    }
-
-    /**
-     * Sets transactions
-     *
-     * @param \Naranja\CheckoutApi\Model\Transaction[] $transactions transactions
-     *
-     * @return $this
-     */
-    public function setTransactions($transactions)
-    {
-        $this->container['transactions'] = $transactions;
 
         return $this;
     }
@@ -385,49 +307,97 @@ class PaymentRequests implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets seller_data
+     * Gets payment_method
      *
-     * @return \Naranja\CheckoutApi\Model\SellerData|null
+     * @return \Naranja\CheckoutApi\Model\PaymentMethod|null
      */
-    public function getSellerData()
+    public function getPaymentMethod()
     {
-        return $this->container['seller_data'];
+        return $this->container['payment_method'];
     }
 
     /**
-     * Sets seller_data
+     * Sets payment_method
      *
-     * @param \Naranja\CheckoutApi\Model\SellerData|null $seller_data seller_data
+     * @param \Naranja\CheckoutApi\Model\PaymentMethod|null $payment_method payment_method
      *
      * @return $this
      */
-    public function setSellerData($seller_data)
+    public function setPaymentMethod($payment_method)
     {
-        $this->container['seller_data'] = $seller_data;
+        $this->container['payment_method'] = $payment_method;
 
         return $this;
     }
 
     /**
-     * Gets request_creation_redirect
+     * Gets status
      *
-     * @return \Naranja\CheckoutApi\Model\RequestCreationRedirect
+     * @return string|null
      */
-    public function getRequestCreationRedirect()
+    public function getStatus()
     {
-        return $this->container['request_creation_redirect'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets request_creation_redirect
+     * Sets status
      *
-     * @param \Naranja\CheckoutApi\Model\RequestCreationRedirect $request_creation_redirect request_creation_redirect
+     * @param string|null $status status
      *
      * @return $this
      */
-    public function setRequestCreationRedirect($request_creation_redirect)
+    public function setStatus($status)
     {
-        $this->container['request_creation_redirect'] = $request_creation_redirect;
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_payment_id
+     *
+     * @return string|null
+     */
+    public function getExternalPaymentId()
+    {
+        return $this->container['external_payment_id'];
+    }
+
+    /**
+     * Sets external_payment_id
+     *
+     * @param string|null $external_payment_id external_payment_id
+     *
+     * @return $this
+     */
+    public function setExternalPaymentId($external_payment_id)
+    {
+        $this->container['external_payment_id'] = $external_payment_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets date_created
+     *
+     * @return string|null
+     */
+    public function getDateCreated()
+    {
+        return $this->container['date_created'];
+    }
+
+    /**
+     * Sets date_created
+     *
+     * @param string|null $date_created date_created
+     *
+     * @return $this
+     */
+    public function setDateCreated($date_created)
+    {
+        $this->container['date_created'] = $date_created;
 
         return $this;
     }
@@ -435,7 +405,7 @@ class PaymentRequests implements ModelInterface, ArrayAccess
     /**
      * Gets callback_url
      *
-     * @return string
+     * @return string|null
      */
     public function getCallbackUrl()
     {
@@ -445,13 +415,85 @@ class PaymentRequests implements ModelInterface, ArrayAccess
     /**
      * Sets callback_url
      *
-     * @param string $callback_url callback_url
+     * @param string|null $callback_url callback_url
      *
      * @return $this
      */
     public function setCallbackUrl($callback_url)
     {
         $this->container['callback_url'] = $callback_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorization_mode
+     *
+     * @return string|null
+     */
+    public function getAuthorizationMode()
+    {
+        return $this->container['authorization_mode'];
+    }
+
+    /**
+     * Sets authorization_mode
+     *
+     * @param string|null $authorization_mode authorization_mode
+     *
+     * @return $this
+     */
+    public function setAuthorizationMode($authorization_mode)
+    {
+        $this->container['authorization_mode'] = $authorization_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions
+     *
+     * @return \Naranja\CheckoutApi\Model\PaymentTransaction[]|null
+     */
+    public function getTransactions()
+    {
+        return $this->container['transactions'];
+    }
+
+    /**
+     * Sets transactions
+     *
+     * @param \Naranja\CheckoutApi\Model\PaymentTransaction[]|null $transactions transactions
+     *
+     * @return $this
+     */
+    public function setTransactions($transactions)
+    {
+        $this->container['transactions'] = $transactions;
 
         return $this;
     }

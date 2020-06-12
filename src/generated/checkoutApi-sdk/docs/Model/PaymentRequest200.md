@@ -1,4 +1,4 @@
-# # PaymentRequests200
+# # PaymentRequest200
 
 ## Properties
 
@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **payment_type** | **string** |  | [optional] 
 **status** | **string** |  | [optional] 
 **expiration_date** | **string** |  | [optional] 
-**transactions** | [**\Naranja\CheckoutApi\Model\PaymentRequestsTransaction[]**](PaymentRequestsTransaction.md) |  | [optional] 
+**transactions** | [**\Naranja\CheckoutApi\Model\PaymentRequestTransaction[]**](PaymentRequestTransaction.md) |  | [optional] 
 **external_payment_id** | **string** |  | [optional] 
 **id** | **string** |  | [optional] 
 **callback_url** | **string** |  | [optional] 

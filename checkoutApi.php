@@ -39,15 +39,6 @@
             Naranja\Security\Configuration::getDefaultConfiguration()->setHost($hosts[1]);
             break;
         
-        case "develop":
-          $hosts = array(
-            'https://e1-checkout.apinaranja.com/api',
-            'https://homoservices.apinaranja.com/security-ms'
-          );
-          Naranja\CheckoutApi\Configuration::getDefaultConfiguration()->setHost($hosts[0]);
-          Naranja\Security\Configuration::getDefaultConfiguration()->setHost($hosts[1]);
-          break;
-
         default:
             print_r('invalid environment'.PHP_EOL);
             die();
@@ -96,7 +87,7 @@
       
     }
 
-    function getPaymentRequests($id) {
+    function getPaymentRequest($id) {
       $token = $this->getToken();
       $apiCheckoutSdk = $this->getInstanceApiCheckout($token);
       try {
@@ -104,6 +95,17 @@
           return $result;
       } catch (Exception $e) {
           echo 'Exception when calling NaranjaCheckout->getPaymentRequests: ', $e->getMessage(), PHP_EOL;
+      }
+    }
+
+    function getPayment($id){
+      $token = $this->getToken();
+      $apiCheckoutSdk = $this->getInstanceApiCheckout($token);
+      try {
+        $result = $apiCheckoutSdk->getPayment($id);
+        return $result;
+      } catch (Exception $e) {
+          echo 'Exception when calling OwnerDxApi->getPayment: ', $e->getMessage(), PHP_EOL;
       }
     }
 }

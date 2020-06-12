@@ -451,7 +451,7 @@ class Configuration
                   "default_value" => "checkout.apinaranja.com",
                   "enum_values" => array(
                     "checkout.apinaranja.com",
-                    "e1-sandbox.apinaranja.com"
+                    "sandbox-checkout.apinaranja.com"
                   )
                 )
               )

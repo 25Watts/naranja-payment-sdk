@@ -120,15 +120,15 @@ class RantyApi
      *
      * Create a new intents payment
      *
-     * @param  \Naranja\CheckoutApi\Model\PaymentRequests $payment_requests payment_requests (required)
+     * @param  \Naranja\CheckoutApi\Model\PaymentRequest $payment_request payment_request (required)
      *
      * @throws \Naranja\CheckoutApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Naranja\CheckoutApi\Model\CreatePaymentRequests200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500
+     * @return \Naranja\CheckoutApi\Model\CreatePaymentRequest200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500
      */
-    public function createPaymentRequest($payment_requests)
+    public function createPaymentRequest($payment_request)
     {
-        list($response) = $this->createPaymentRequestWithHttpInfo($payment_requests);
+        list($response) = $this->createPaymentRequestWithHttpInfo($payment_request);
         return $response;
     }
 
@@ -137,15 +137,15 @@ class RantyApi
      *
      * Create a new intents payment
      *
-     * @param  \Naranja\CheckoutApi\Model\PaymentRequests $payment_requests (required)
+     * @param  \Naranja\CheckoutApi\Model\PaymentRequest $payment_request (required)
      *
      * @throws \Naranja\CheckoutApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Naranja\CheckoutApi\Model\CreatePaymentRequests200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Naranja\CheckoutApi\Model\CreatePaymentRequest200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPaymentRequestWithHttpInfo($payment_requests)
+    public function createPaymentRequestWithHttpInfo($payment_request)
     {
-        $request = $this->createPaymentRequestRequest($payment_requests);
+        $request = $this->createPaymentRequestRequest($payment_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -156,7 +156,7 @@ class RantyApi
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
                 );
             }
 
@@ -178,14 +178,14 @@ class RantyApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Naranja\CheckoutApi\Model\CreatePaymentRequests200' === '\SplFileObject') {
+                    if ('\Naranja\CheckoutApi\Model\CreatePaymentRequest200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\CreatePaymentRequests200', []),
+                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\CreatePaymentRequest200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -193,7 +193,7 @@ class RantyApi
                     if ('\Naranja\CheckoutApi\Model\BadRequest400' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -205,7 +205,7 @@ class RantyApi
                     if ('\Naranja\CheckoutApi\Model\ErrorResponse401' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -217,7 +217,7 @@ class RantyApi
                     if ('\Naranja\CheckoutApi\Model\ErrorResponse409' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -229,7 +229,7 @@ class RantyApi
                     if ('\Naranja\CheckoutApi\Model\ErrorResponse500' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -239,12 +239,12 @@ class RantyApi
                     ];
             }
 
-            $returnType = '\Naranja\CheckoutApi\Model\CreatePaymentRequests200';
+            $returnType = '\Naranja\CheckoutApi\Model\CreatePaymentRequest200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = $responseBody->getContents();
             }
 
             return [
@@ -258,7 +258,7 @@ class RantyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Naranja\CheckoutApi\Model\CreatePaymentRequests200',
+                        '\Naranja\CheckoutApi\Model\CreatePaymentRequest200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -305,14 +305,14 @@ class RantyApi
      *
      * Create a new intents payment
      *
-     * @param  \Naranja\CheckoutApi\Model\PaymentRequests $payment_requests (required)
+     * @param  \Naranja\CheckoutApi\Model\PaymentRequest $payment_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPaymentRequestAsync($payment_requests)
+    public function createPaymentRequestAsync($payment_request)
     {
-        return $this->createPaymentRequestAsyncWithHttpInfo($payment_requests)
+        return $this->createPaymentRequestAsyncWithHttpInfo($payment_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -325,15 +325,15 @@ class RantyApi
      *
      * Create a new intents payment
      *
-     * @param  \Naranja\CheckoutApi\Model\PaymentRequests $payment_requests (required)
+     * @param  \Naranja\CheckoutApi\Model\PaymentRequest $payment_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPaymentRequestAsyncWithHttpInfo($payment_requests)
+    public function createPaymentRequestAsyncWithHttpInfo($payment_request)
     {
-        $returnType = '\Naranja\CheckoutApi\Model\CreatePaymentRequests200';
-        $request = $this->createPaymentRequestRequest($payment_requests);
+        $returnType = '\Naranja\CheckoutApi\Model\CreatePaymentRequest200';
+        $request = $this->createPaymentRequestRequest($payment_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -343,7 +343,7 @@ class RantyApi
                     if ($returnType === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -372,17 +372,17 @@ class RantyApi
     /**
      * Create request for operation 'createPaymentRequest'
      *
-     * @param  \Naranja\CheckoutApi\Model\PaymentRequests $payment_requests (required)
+     * @param  \Naranja\CheckoutApi\Model\PaymentRequest $payment_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createPaymentRequestRequest($payment_requests)
+    protected function createPaymentRequestRequest($payment_request)
     {
-        // verify the required parameter 'payment_requests' is set
-        if ($payment_requests === null || (is_array($payment_requests) && count($payment_requests) === 0)) {
+        // verify the required parameter 'payment_request' is set
+        if ($payment_request === null || (is_array($payment_request) && count($payment_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $payment_requests when calling createPaymentRequest'
+                'Missing the required parameter $payment_request when calling createPaymentRequest'
             );
         }
 
@@ -395,11 +395,10 @@ class RantyApi
 
 
 
-
         // body params
         $_tempBody = null;
-        if (isset($payment_requests)) {
-            $_tempBody = $payment_requests;
+        if (isset($payment_request)) {
+            $_tempBody = $payment_request;
         }
 
         if ($multipart) {
@@ -468,7 +467,7 @@ class RantyApi
     }
 
     /**
-     * Operation getPaymentRequests
+     * Operation getPayment
      *
      * returns the information of a transaction ,
      *
@@ -476,16 +475,16 @@ class RantyApi
      *
      * @throws \Naranja\CheckoutApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Naranja\CheckoutApi\Model\PaymentRequests200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500
+     * @return \Naranja\CheckoutApi\Model\Payment200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500
      */
-    public function getPaymentRequests($id)
+    public function getPayment($id)
     {
-        list($response) = $this->getPaymentRequestsWithHttpInfo($id);
+        list($response) = $this->getPaymentWithHttpInfo($id);
         return $response;
     }
 
     /**
-     * Operation getPaymentRequestsWithHttpInfo
+     * Operation getPaymentWithHttpInfo
      *
      * returns the information of a transaction ,
      *
@@ -493,11 +492,11 @@ class RantyApi
      *
      * @throws \Naranja\CheckoutApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Naranja\CheckoutApi\Model\PaymentRequests200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Naranja\CheckoutApi\Model\Payment200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPaymentRequestsWithHttpInfo($id)
+    public function getPaymentWithHttpInfo($id)
     {
-        $request = $this->getPaymentRequestsRequest($id);
+        $request = $this->getPaymentRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -508,7 +507,7 @@ class RantyApi
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
                 );
             }
 
@@ -530,14 +529,14 @@ class RantyApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Naranja\CheckoutApi\Model\PaymentRequests200' === '\SplFileObject') {
+                    if ('\Naranja\CheckoutApi\Model\Payment200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\PaymentRequests200', []),
+                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\Payment200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -545,7 +544,7 @@ class RantyApi
                     if ('\Naranja\CheckoutApi\Model\BadRequest400' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -557,7 +556,7 @@ class RantyApi
                     if ('\Naranja\CheckoutApi\Model\ErrorResponse401' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -569,7 +568,7 @@ class RantyApi
                     if ('\Naranja\CheckoutApi\Model\ErrorResponse409' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -581,7 +580,7 @@ class RantyApi
                     if ('\Naranja\CheckoutApi\Model\ErrorResponse500' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -591,12 +590,12 @@ class RantyApi
                     ];
             }
 
-            $returnType = '\Naranja\CheckoutApi\Model\PaymentRequests200';
+            $returnType = '\Naranja\CheckoutApi\Model\Payment200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = $responseBody->getContents();
             }
 
             return [
@@ -610,7 +609,7 @@ class RantyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Naranja\CheckoutApi\Model\PaymentRequests200',
+                        '\Naranja\CheckoutApi\Model\Payment200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -653,7 +652,7 @@ class RantyApi
     }
 
     /**
-     * Operation getPaymentRequestsAsync
+     * Operation getPaymentAsync
      *
      * returns the information of a transaction ,
      *
@@ -662,9 +661,9 @@ class RantyApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPaymentRequestsAsync($id)
+    public function getPaymentAsync($id)
     {
-        return $this->getPaymentRequestsAsyncWithHttpInfo($id)
+        return $this->getPaymentAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -673,7 +672,7 @@ class RantyApi
     }
 
     /**
-     * Operation getPaymentRequestsAsyncWithHttpInfo
+     * Operation getPaymentAsyncWithHttpInfo
      *
      * returns the information of a transaction ,
      *
@@ -682,10 +681,10 @@ class RantyApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPaymentRequestsAsyncWithHttpInfo($id)
+    public function getPaymentAsyncWithHttpInfo($id)
     {
-        $returnType = '\Naranja\CheckoutApi\Model\PaymentRequests200';
-        $request = $this->getPaymentRequestsRequest($id);
+        $returnType = '\Naranja\CheckoutApi\Model\Payment200';
+        $request = $this->getPaymentRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -695,7 +694,7 @@ class RantyApi
                     if ($returnType === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = $responseBody->getContents();
                     }
 
                     return [
@@ -722,19 +721,375 @@ class RantyApi
     }
 
     /**
-     * Create request for operation 'getPaymentRequests'
+     * Create request for operation 'getPayment'
      *
      * @param  string $id is the id returned for the payment intention (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPaymentRequestsRequest($id)
+    protected function getPaymentRequest($id)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getPaymentRequests'
+                'Missing the required parameter $id when calling getPayment'
+            );
+        }
+
+        $resourcePath = '/payments/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPaymentRequest
+     *
+     * returns the information of a transaction ,
+     *
+     * @param  string $id is the id returned for the payment intention (required)
+     *
+     * @throws \Naranja\CheckoutApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Naranja\CheckoutApi\Model\PaymentRequest200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500
+     */
+    public function getPaymentRequests($id)
+    {
+        list($response) = $this->getPaymentRequestWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation getPaymentRequestWithHttpInfo
+     *
+     * returns the information of a transaction ,
+     *
+     * @param  string $id is the id returned for the payment intention (required)
+     *
+     * @throws \Naranja\CheckoutApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Naranja\CheckoutApi\Model\PaymentRequest200|\Naranja\CheckoutApi\Model\BadRequest400|\Naranja\CheckoutApi\Model\ErrorResponse401|\Naranja\CheckoutApi\Model\ErrorResponse409|\Naranja\CheckoutApi\Model\ErrorResponse500, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPaymentRequestWithHttpInfo($id)
+    {
+        $request = $this->getPaymentRequestRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Naranja\CheckoutApi\Model\PaymentRequest200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\PaymentRequest200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Naranja\CheckoutApi\Model\BadRequest400' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\BadRequest400', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Naranja\CheckoutApi\Model\ErrorResponse401' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\ErrorResponse401', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\Naranja\CheckoutApi\Model\ErrorResponse409' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\ErrorResponse409', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Naranja\CheckoutApi\Model\ErrorResponse500' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Naranja\CheckoutApi\Model\ErrorResponse500', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Naranja\CheckoutApi\Model\PaymentRequest200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Naranja\CheckoutApi\Model\PaymentRequest200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Naranja\CheckoutApi\Model\BadRequest400',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Naranja\CheckoutApi\Model\ErrorResponse401',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Naranja\CheckoutApi\Model\ErrorResponse409',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Naranja\CheckoutApi\Model\ErrorResponse500',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPaymentRequestAsync
+     *
+     * returns the information of a transaction ,
+     *
+     * @param  string $id is the id returned for the payment intention (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPaymentRequestAsync($id)
+    {
+        return $this->getPaymentRequestAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPaymentRequestAsyncWithHttpInfo
+     *
+     * returns the information of a transaction ,
+     *
+     * @param  string $id is the id returned for the payment intention (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPaymentRequestAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Naranja\CheckoutApi\Model\PaymentRequest200';
+        $request = $this->getPaymentRequestRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPaymentRequest'
+     *
+     * @param  string $id is the id returned for the payment intention (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getPaymentRequestRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getPaymentRequest'
             );
         }
 
@@ -744,7 +1099,6 @@ class RantyApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
 
         // path params
