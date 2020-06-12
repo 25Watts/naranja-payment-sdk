@@ -1,4 +1,4 @@
-# # PaymentRequests
+# # PaymentRequest
 
 ## Properties
 

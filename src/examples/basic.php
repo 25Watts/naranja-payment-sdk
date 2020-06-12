@@ -3,8 +3,7 @@
 require_once(__DIR__ . '/../../vendor/autoload.php');
 require(__DIR__ . '/../../checkoutApi.php');
 
-$naranjaCheckout = new NaranjaCheckout('CLIENT_ID', 'CLIENT_SECRET', 'ENVIRONMENT');
-
+$naranjaCheckout = new NaranjaCheckout('CLIENT_ID','CLIENT_SECRET','ENVIROMENT');
 // Definimos el primer producto
 $product1 = new  Naranja\CheckoutApi\Model\ProductItem();
 $product1->setName('Veggies');
@@ -47,7 +46,7 @@ $transaction->setSoftDescriptor('GOFRIZ CONGELADOS');
 $transaction->setProducts([$product1, $product2]);
 
 // Generamos el payment request
-$paymentRequest = new Naranja\CheckoutApi\Model\PaymentRequests();
+$paymentRequest = new Naranja\CheckoutApi\Model\PaymentRequest();
 $paymentRequest->setPaymentType('web_checkout');
 $paymentRequest->setAuthorizationMode('SALE');
 $paymentRequest->setExternalPaymentId('123456789');

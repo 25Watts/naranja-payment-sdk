@@ -1,4 +1,4 @@
-# # CreatePaymentRequests200
+# # CreatePaymentRequest200
 
 ## Properties
 

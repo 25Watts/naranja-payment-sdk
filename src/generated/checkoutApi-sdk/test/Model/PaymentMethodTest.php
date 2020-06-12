@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePaymentRequests200Test
+ * PaymentMethodTest
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ namespace Naranja\CheckoutApi;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreatePaymentRequests200Test Class Doc Comment
+ * PaymentMethodTest Class Doc Comment
  *
  * @category    Class
- * @description CreatePaymentRequests200
+ * @description PaymentMethod
  * @package     Naranja\CheckoutApi
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreatePaymentRequests200Test extends TestCase
+class PaymentMethodTest extends TestCase
 {
 
     /**
@@ -72,30 +72,30 @@ class CreatePaymentRequests200Test extends TestCase
     }
 
     /**
-     * Test "CreatePaymentRequests200"
+     * Test "PaymentMethod"
      */
-    public function testCreatePaymentRequests200()
+    public function testPaymentMethod()
     {
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "expiration_month"
      */
-    public function testPropertyId()
+    public function testPropertyExpirationMonth()
     {
     }
 
     /**
-     * Test attribute "checkout_url"
+     * Test attribute "expiration_year"
      */
-    public function testPropertyCheckoutUrl()
+    public function testPropertyExpirationYear()
     {
     }
 
     /**
-     * Test attribute "external_payment_id"
+     * Test attribute "metadata"
      */
-    public function testPropertyExternalPaymentId()
+    public function testPropertyMetadata()
     {
     }
 }

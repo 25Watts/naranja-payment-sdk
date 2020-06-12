@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePaymentRequests200
+ * PaymentTransaction
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Naranja\CheckoutApi\ObjectSerializer;
 
 /**
- * CreatePaymentRequests200 Class Doc Comment
+ * PaymentTransaction Class Doc Comment
  *
  * @category Class
  * @package  Naranja\CheckoutApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
+class PaymentTransaction implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'create_payment_requests_200';
+    protected static $openAPIModelName = 'paymentTransaction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'checkout_url' => 'string',
-        'external_payment_id' => 'string'
+        'stage' => 'string',
+        'merchant_id' => 'string',
+        'date_created' => 'string',
+        'soft_descriptor' => 'string',
+        'installments_plan' => '\Naranja\CheckoutApi\Model\InstallmentsPlan'
     ];
 
     /**
@@ -69,8 +72,11 @@ class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'checkout_url' => null,
-        'external_payment_id' => null
+        'stage' => null,
+        'merchant_id' => null,
+        'date_created' => null,
+        'soft_descriptor' => null,
+        'installments_plan' => null
     ];
 
     /**
@@ -101,8 +107,11 @@ class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'checkout_url' => 'checkout_url',
-        'external_payment_id' => 'external_payment_id'
+        'stage' => 'stage',
+        'merchant_id' => 'merchant_id',
+        'date_created' => 'date_created',
+        'soft_descriptor' => 'soft_descriptor',
+        'installments_plan' => 'installments_plan'
     ];
 
     /**
@@ -112,8 +121,11 @@ class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'checkout_url' => 'setCheckoutUrl',
-        'external_payment_id' => 'setExternalPaymentId'
+        'stage' => 'setStage',
+        'merchant_id' => 'setMerchantId',
+        'date_created' => 'setDateCreated',
+        'soft_descriptor' => 'setSoftDescriptor',
+        'installments_plan' => 'setInstallmentsPlan'
     ];
 
     /**
@@ -123,8 +135,11 @@ class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'checkout_url' => 'getCheckoutUrl',
-        'external_payment_id' => 'getExternalPaymentId'
+        'stage' => 'getStage',
+        'merchant_id' => 'getMerchantId',
+        'date_created' => 'getDateCreated',
+        'soft_descriptor' => 'getSoftDescriptor',
+        'installments_plan' => 'getInstallmentsPlan'
     ];
 
     /**
@@ -188,8 +203,11 @@ class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['checkout_url'] = isset($data['checkout_url']) ? $data['checkout_url'] : null;
-        $this->container['external_payment_id'] = isset($data['external_payment_id']) ? $data['external_payment_id'] : null;
+        $this->container['stage'] = isset($data['stage']) ? $data['stage'] : null;
+        $this->container['merchant_id'] = isset($data['merchant_id']) ? $data['merchant_id'] : null;
+        $this->container['date_created'] = isset($data['date_created']) ? $data['date_created'] : null;
+        $this->container['soft_descriptor'] = isset($data['soft_descriptor']) ? $data['soft_descriptor'] : null;
+        $this->container['installments_plan'] = isset($data['installments_plan']) ? $data['installments_plan'] : null;
     }
 
     /**
@@ -241,49 +259,121 @@ class CreatePaymentRequests200 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets checkout_url
+     * Gets stage
      *
      * @return string|null
      */
-    public function getCheckoutUrl()
+    public function getStage()
     {
-        return $this->container['checkout_url'];
+        return $this->container['stage'];
     }
 
     /**
-     * Sets checkout_url
+     * Sets stage
      *
-     * @param string|null $checkout_url checkout_url
+     * @param string|null $stage stage
      *
      * @return $this
      */
-    public function setCheckoutUrl($checkout_url)
+    public function setStage($stage)
     {
-        $this->container['checkout_url'] = $checkout_url;
+        $this->container['stage'] = $stage;
 
         return $this;
     }
 
     /**
-     * Gets external_payment_id
+     * Gets merchant_id
      *
      * @return string|null
      */
-    public function getExternalPaymentId()
+    public function getMerchantId()
     {
-        return $this->container['external_payment_id'];
+        return $this->container['merchant_id'];
     }
 
     /**
-     * Sets external_payment_id
+     * Sets merchant_id
      *
-     * @param string|null $external_payment_id external_payment_id
+     * @param string|null $merchant_id merchant_id
      *
      * @return $this
      */
-    public function setExternalPaymentId($external_payment_id)
+    public function setMerchantId($merchant_id)
     {
-        $this->container['external_payment_id'] = $external_payment_id;
+        $this->container['merchant_id'] = $merchant_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets date_created
+     *
+     * @return string|null
+     */
+    public function getDateCreated()
+    {
+        return $this->container['date_created'];
+    }
+
+    /**
+     * Sets date_created
+     *
+     * @param string|null $date_created date_created
+     *
+     * @return $this
+     */
+    public function setDateCreated($date_created)
+    {
+        $this->container['date_created'] = $date_created;
+
+        return $this;
+    }
+
+    /**
+     * Gets soft_descriptor
+     *
+     * @return string|null
+     */
+    public function getSoftDescriptor()
+    {
+        return $this->container['soft_descriptor'];
+    }
+
+    /**
+     * Sets soft_descriptor
+     *
+     * @param string|null $soft_descriptor soft_descriptor
+     *
+     * @return $this
+     */
+    public function setSoftDescriptor($soft_descriptor)
+    {
+        $this->container['soft_descriptor'] = $soft_descriptor;
+
+        return $this;
+    }
+
+    /**
+     * Gets installments_plan
+     *
+     * @return \Naranja\CheckoutApi\Model\InstallmentsPlan|null
+     */
+    public function getInstallmentsPlan()
+    {
+        return $this->container['installments_plan'];
+    }
+
+    /**
+     * Sets installments_plan
+     *
+     * @param \Naranja\CheckoutApi\Model\InstallmentsPlan|null $installments_plan installments_plan
+     *
+     * @return $this
+     */
+    public function setInstallmentsPlan($installments_plan)
+    {
+        $this->container['installments_plan'] = $installments_plan;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentRequestsTransactionTest
+ * Payment200Test
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ namespace Naranja\CheckoutApi;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PaymentRequestsTransactionTest Class Doc Comment
+ * Payment200Test Class Doc Comment
  *
  * @category    Class
- * @description PaymentRequestsTransaction
+ * @description Payment200
  * @package     Naranja\CheckoutApi
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class PaymentRequestsTransactionTest extends TestCase
+class Payment200Test extends TestCase
 {
 
     /**
@@ -72,37 +72,79 @@ class PaymentRequestsTransactionTest extends TestCase
     }
 
     /**
-     * Test "PaymentRequestsTransaction"
+     * Test "Payment200"
      */
-    public function testPaymentRequestsTransaction()
+    public function testPayment200()
     {
     }
 
     /**
-     * Test attribute "amount"
+     * Test attribute "payment_type"
      */
-    public function testPropertyAmount()
+    public function testPropertyPaymentType()
     {
     }
 
     /**
-     * Test attribute "merchant_id"
+     * Test attribute "additional_info"
      */
-    public function testPropertyMerchantId()
+    public function testPropertyAdditionalInfo()
     {
     }
 
     /**
-     * Test attribute "soft_descriptor"
+     * Test attribute "payment_method"
      */
-    public function testPropertySoftDescriptor()
+    public function testPropertyPaymentMethod()
     {
     }
 
     /**
-     * Test attribute "products"
+     * Test attribute "status"
      */
-    public function testPropertyProducts()
+    public function testPropertyStatus()
+    {
+    }
+
+    /**
+     * Test attribute "external_payment_id"
+     */
+    public function testPropertyExternalPaymentId()
+    {
+    }
+
+    /**
+     * Test attribute "date_created"
+     */
+    public function testPropertyDateCreated()
+    {
+    }
+
+    /**
+     * Test attribute "callback_url"
+     */
+    public function testPropertyCallbackUrl()
+    {
+    }
+
+    /**
+     * Test attribute "authorization_mode"
+     */
+    public function testPropertyAuthorizationMode()
+    {
+    }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+    }
+
+    /**
+     * Test attribute "transactions"
+     */
+    public function testPropertyTransactions()
     {
     }
 }
