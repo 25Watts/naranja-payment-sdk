@@ -6,13 +6,13 @@ class NaranjaCheckout {
      * Instance clientId
      * @var string
      */
-    private string $clientId;
+    private $clientId;
 
     /**
      * Instance clientSecret
      * @var string
      */
-    private string $clientSecret;
+    private $clientSecret;
     
     /**
      * Naranja Checkout API
