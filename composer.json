@@ -1,7 +1,7 @@
 {
     "name": "watts25/naranja-payment-sdk",
     "description": "Naranja Ranty - Checkout SDK",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "keywords": [
         "openapitools",
         "openapi-generator",
