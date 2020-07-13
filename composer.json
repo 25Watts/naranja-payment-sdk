@@ -26,8 +26,10 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^6.2",
-        "vlucas/phpdotenv": "^5.0"
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^2.6"
     },
     "autoload": {
         "psr-4": { 
