@@ -497,7 +497,7 @@ class RantyApi
      */
     public function getPaymentWithHttpInfo($id)
     {
-        $request = $this->getPaymentRequest($id);
+        $request = $this->_getPaymentRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
